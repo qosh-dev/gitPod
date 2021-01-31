@@ -2,9 +2,7 @@ import express, { Request, Response } from "express"
 import  bodyParser from "body-parser";
 
 const config = {
-    PORT : 5000,
-    audioRoute : "/api/audio/",
-    audioFilesPath : `http://localhost:5000/api/audio/`
+    PORT : 5000
 }
 const app = express()
 
@@ -14,12 +12,7 @@ app.use(bodyParser.urlencoded({ extended : true}))
 
 
 app.get("/", (req, res) => {
-    // res.json("test")
-    res.redirect("/ddd")
-})
-
-app.get("/ddd", (req, res) => {
-    res.json("asdasdasd")
+    res.json("test")
 })
 
 
