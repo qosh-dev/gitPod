@@ -1,6 +1,4 @@
 import express, { Request, Response } from "express"
-import audioFilesService from "./service/audioFiles/controller";
-import userSupportService from "./service/userSupport/controller";
 import  bodyParser from "body-parser";
 
 const config = {
@@ -10,30 +8,19 @@ const config = {
 }
 const app = express()
 
-//Body parser configure
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : true}))
 
-// Adding folder with audio files 
 
-app.use(config.audioRoute, express.static('./mp3'));
+app.get("/", (req, res) => {
+    // res.json("test")
+    res.redirect("/ddd")
+})
 
-//#region audioFilesEndPoint  /api/audio/
-
-app.use(config.audioRoute, audioFilesService )
-
-
-
-
-//#endregion
-
-type req<T> = Request<any, any, any, T>
-//#region userSupportEndPoint  /api/userSupport/
-
-app.use("/api/userSupport/", userSupportService)
-
-//#endregion
-
+app.get("/ddd", (req, res) => {
+    res.json("asdasdasd")
+})
 
 
 
@@ -47,4 +34,4 @@ app.listen(config.PORT , () => {
 
 
 
-  export default config
+export default config
